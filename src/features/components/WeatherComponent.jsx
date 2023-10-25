@@ -1,45 +1,52 @@
 import React from "react";
 import "./WeatherComponent.css";
 
-function WeatherComponent(lat, lon, data) {
-  //console.log(data)
+function WeatherComponent({ data }) {
+  // console.log(data);
   return (
     <div className="container">
       <div className="top">
         <div className="location">
-          <h2>{data && data.name} </h2>
-          {console.log(data,lat,lon)}
+        <h1>{data && data.name}, {data && data.sys && data.sys.country}</h1>
+
         </div>
 
         <div className="temperature">
-          <h2>30°C</h2>
+          {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
         </div>
 
         <div className="coordinates">
           <div className="lat">
-            <p>latitude</p>
+          {data.main ? <h2>{data.coord.lat}</h2> : null}
           </div>
           <div className="lon">
-            <p>longitude</p>
+          {data.main ? <h2>{data.coord.lon}</h2> : null}
           </div>
         </div>
 
         <div className="description">
-          <p>Sunny</p>
+          {data.weather ? <h2>{data.weather[0].main}</h2> : null}
         </div>
       </div>
 
       <div className="bottom">
         <div className="feels">
-          <p>Feels like 30°C</p>
+          {data.main ? (
+            <p className="bold">{data.main.feels_like.toFixed()}°F</p>
+          ) : null}
+          <p>Feels Like</p>
         </div>
 
         <div className="humidity">
-          <p>Humidity: 30%</p>
+          {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
+          <p>Humidity</p>
         </div>
 
         <div className="wind">
-          <p>Wind: 30 km/h</p>
+          {data.wind ? (
+            <p className="bold">{data.wind.speed.toFixed()} MPH</p>
+          ) : null}
+          <p>Wind Speed</p>
         </div>
       </div>
     </div>

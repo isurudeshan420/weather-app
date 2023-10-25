@@ -5,14 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 function SearchComponent({ lat, lon, setLat, setLon, setData, getHomeWeather }) {
-  const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=304a53b0dafcaa5d3c6c76362027c039`;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=304a53b0dafcaa5d3c6c76362027c039`;
   //https://api.openweathermap.org/data/2.5/weather?lat=38.8951&lon=-77.0364&appid=304a53b0dafcaa5d3c6c76362027c039
 
   const searchLocation = () => {
     axios.get(URL)
     .then((response) => {
       setData(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     })
     .catch((error) => {
       console.error(error);
