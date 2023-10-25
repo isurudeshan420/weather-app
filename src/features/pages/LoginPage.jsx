@@ -6,7 +6,7 @@ import "./LoginPage.css";
 function LoginPage() {
   return (
     <div className="loginPage">
-      <h1>Login Page</h1>
+      <h1>Weather Map Login</h1>
       <LoginForm />
     </div>
   );
