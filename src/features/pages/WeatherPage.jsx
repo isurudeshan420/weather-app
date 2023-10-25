@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Don't forget to import axios
+import axios from "axios"; 
 
 import WeatherComponent from "../components/WeatherComponent";
 import SearchComponent from "../components/SearchComponent";

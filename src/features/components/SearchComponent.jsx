@@ -1,6 +1,7 @@
 import React from "react";
 import "./SearchComponent.css";
 import axios from "axios";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
@@ -52,11 +53,13 @@ function SearchComponent({ lat, lon, setLat, setLon, setData, getHomeWeather }) 
             onChange={(e) => setLon(e.target.value)}
           />
         </div>
-        <div className="search">
-          <button className="searchButton" onClick={searchLocation}>
+
+        <div>
+          <button onClick={searchLocation}>
             Search
           </button>
         </div>
+
       </div>
     </div>
   );
