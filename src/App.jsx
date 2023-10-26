@@ -2,16 +2,23 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./features/pages/LoginPage";
 import WeatherPage from "./features/pages/WeatherPage";
+import { AuthProvider } from "./context/AuthContext";
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 function App() {
-
   return (
-      <Router>
+    <Router>
+      <AuthProvider>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/weather" element={<WeatherPage />} />
+          <Route path="/">
+            <Route element={<PrivateRoutes />}>
+              <Route index element={<WeatherPage />} />
+            </Route>
+            <Route path="login" element={<LoginPage />} />
+          </Route>
         </Routes>
-      </Router>
+      </AuthProvider>
+    </Router>
   );
 }
 

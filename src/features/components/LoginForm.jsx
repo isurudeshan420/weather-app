@@ -1,30 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./LoginForm.css";
-import users from "../../assets/users.json";
+import AuthContext from "../../context/AuthContext";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState(null);
+
+  const { loginUser } = useContext(AuthContext);
+  const {loginError} = useContext(AuthContext);
 
   const handleLogin = () => {
-    setLoginError(null);
-
-    const user = users.find(
-      (user) => user.username === username && user.password === password
-    );
-    try {
-      if (user) {
-        // Authentication successful
-        console.log("Authentication successful");
-      } else {
-        // Authentication failed
-        setLoginError("Invalid username or password");
-      }
-    } catch (error) {
-      console.error("Error loading user data:", error);
-      setLoginError("An error occurred. Please try again later.");
-    }
+    loginUser(username,password);
   };
 
   return (
